@@ -1,0 +1,13 @@
+C(CCCCCOCCOCCOCCOCCO)CCCCCS	(11-Mercaptoundecyl)tetra(ethylene glycol)
+CC(=O)NC(CS)C(=O)O	N-Acetyl-L-cysteine
+C(CCCCCN)CCCCCS	11-Amino-1-undecanethiol
+C(C(=O)O)C(CC(=O)O)(C(=O)O)O	Citrate
+CCCCCCCCCCCCCCCCN	Hexadecylamine
+C(C(=O)O)S	Mercaptoacetic acid
+C1=CC(=CC=C1C(=O)O)S	4-Mercaptobenzoic acid
+C(CS(=O)(=O)O)S	2-Mercaptoethanesulfonate
+C(CCCCCCCC(=O)O)CCCCCCCS	16-Mercaptohexadecanoic acid
+C(CS)C(=O)O	3-Mercaptopropionic acid
+C(C(C(=O)O)S)C(=O)O	Mercaptosuccinic acid
+C(CCCCCS)CCCCC(=O)O	11-Mercaptoundecanoic acid
+
