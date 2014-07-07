@@ -11,8 +11,8 @@ library(expm)
 # PARAMETERS
 #-------------------------------------------------------------------------------
 kPower <- 5                          # power for Markov chains (0 - kPower)
-SFile <- "SMILES.txt"                  # SMILES file
-WFile <- "AtomProperties.txt"         # weigths file:  AtomE EM PKJ vdWArea AC2P (tab-separated)
+SFile <- "test.txt"                # SMILES file
+WFile <- "AtomProperties.txt"        # weigths file:  AtomE EM PKJ vdWArea AC2P (tab-separated)
 #-------------------------------------------------------------------------------
 # Read SMILES formulas
 #-------------------------------------------------------------------------------
@@ -26,6 +26,13 @@ dfW=read.table(WFile,header=T)       # read weigths file
 Headers <- names(dfW)                # list variable names into the dataset
 wNoRows=dim(dfW)[1]                  # number of rows = atoms with properties
 wNoCols=dim(dfW)[2]                  # number of cols = atomic element, properties 
+#-------------------------------------------------------------------------------
+# Initialize the header of RESULTS string
+sResults <- c("Molecule")
+for(h in 2:wNoCols){ 
+  sResults <- c(sResults,sprintf("MMP_%s",Headers[h]))
+}
+sResults <- c(sResults,"\n")
 #-------------------------------------------------------------------------------
 # PROCESS EACH SMILES
 # - calculate MMPs for each SMILES, each pythical-chemical property and atom type
@@ -94,6 +101,9 @@ for(s in 1:nSmiles){                 # process each SMILES
   }
   # print final MMPs for one molecule, for each property (averaged by all k values), for all types of atoms
   # Molecule_Name MMP_EM MMP_PKJ MMP_vdWA MMP_AC2P
-  cat(molName,vMMP,"\n")
+  sResults <- c(sResults,molName,vMMP,"\n")
   # additional calculations will be added for each type of atom!!!!
 }
+
+# print final output
+cat(sResults, sep = "\t")
