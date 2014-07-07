@@ -7,11 +7,14 @@
 library(ChemmineR)
 library(base)
 library(expm)
+
+start.time <- Sys.time()
+
 #-------------------------------------------------------------------------------
 # PARAMETERS
 #-------------------------------------------------------------------------------
 kPower <- 5                          # power for Markov chains (0 - kPower)
-SFile <- "test.txt"                # SMILES file
+SFile <- "SMILES.txt"                # SMILES file
 WFile <- "AtomProperties.txt"        # weigths file:  AtomE EM PKJ vdWArea AC2P (tab-separated)
 #-------------------------------------------------------------------------------
 # Read SMILES formulas
@@ -41,7 +44,7 @@ sResults <- c(sResults,"\n")
 for(s in 1:nSmiles){                 # process each SMILES
   smi <- smiles[[s]]                 # SMILES formula
   molName <- names(smiles)[s]        # molecule label
-  # print(smi)
+  print(c(s,molName))
   sdf <- smiles2sdf(smi)             # convert one smiles to sdf format
   BM <- conMA(sdf,exclude=c("H"))    # bond matrix (complex list!)
   
@@ -107,3 +110,10 @@ for(s in 1:nSmiles){                 # process each SMILES
 
 # print final output
 cat(sResults, sep = "\t")
+
+
+end.time <- Sys.time()
+time.taken <- start.time - end.time
+time.taken
+
+# 500 SMILES in 13.5 s (on i5,8G RAM,SSD)
